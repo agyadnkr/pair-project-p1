@@ -74,9 +74,13 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     hooks: {
       beforeCreate: (instance, options) => {
+
         instance.status = 'Available'
 
-        instance.carCode = `${instance.model}_${instance.BrandId}`
+        let formatPrice = instance.price.slice(0, 2)
+        let formatYear = instance.year.slice(2, 4)
+
+        instance.carCode = `${formatPrice}_${formatYear}_${instance.color}_${instance.BrandId}`
       }
     },
     modelName: 'Car',
