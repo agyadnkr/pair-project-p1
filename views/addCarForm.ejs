@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Add Car For Sale</h2>
+<form action="/sell/add" method="post">
+
+    <label>Choose Brand</label>
+    <br>
+    <select name="BrandId">
+      <option selected disabled>Car Brand</option>
+          <% data.forEach(e => { %>
+              <option value="<%= e.id%>">
+              <%= e.brandName%>
+              </option>
+          <%  }) %>
+  
+    </select>
+    <br><br>
+
+  <label>Models</label><br>
+  <input type="text" placeholder="Input your car model" name="model">
+  <br><br>
+
+  <label>Image Url</label><br>
+  <input type="text" placeholder="Input your car image" name="imageUrl">
+  <br><br>
+
+  <label>Year</label><br>
+  <input type="number" placeholder="Input your car year" name="year">
+  <br><br>
+
+  <label>Color</label><br>
+  <input type="text" placeholder="Input your car color" name="color">
+  <br><br>
+
+  <label>Price</label><br>
+  <input type="number" placeholder="Input your car price" name="price">
+  <br><br>
+
+  <label>cc</label><br>
+  <input type="number" placeholder="Input your car cc" name="cc">
+  <br><br>
+
+  <label>Mileage</label><br>
+  <input type="number" placeholder="Input your car mileage" name="mileage">
+  <br><br>
+  
+  <label>Transmission</label>
+  <br>
+  <select name="transmission">
+    <option selected disabled>Choose one</option>
+    <option value="Manual">Manual</option>
+    <option value="Automatic">Automatic</option>
+  </select>
+  <br><br>
+
+  <label>Description</label><br>
+  <div>
+  <textarea type="text" placeholder="Input your car description here" name="description" cols="30" rows="10"></textarea>
+  <br><br>
+
+  <input type="submit" value="submit">
+</form>
+</body>
+</html>

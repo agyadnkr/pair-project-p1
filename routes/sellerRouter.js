@@ -4,6 +4,7 @@ const Controller = require('../controllers/sellerController')
 
 sellerRouter.get('/', Controller.carList)
 
-// sellerRouter.get('/', (req, res) => {res.send('seller home')})
+sellerRouter.get('/add', Controller.addCarForm)
+sellerRouter.post('/add', Controller.addCar)
 
 module.exports = sellerRouter;
