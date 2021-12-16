@@ -66,6 +66,10 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           msg: 'Please fill your car price'
+        }, 
+        min: {
+          msg: 'Minimum price is 1',
+          args : [0]
         }
       }
     },
