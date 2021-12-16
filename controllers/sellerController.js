@@ -134,6 +134,23 @@ class sellerController {
     })
   }
 
+  static addBrandForm(req, res) {
+    res.render('addBrandForm')
+  }
+
+  static addBrand(req, res) {
+    const {brandName, logo} = req.body
+    let value = {brandName, logo}
+
+    Brand.create(value)
+      .then(data => {
+        res.redirect(`/sell/add`)
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  }
+
 }
 
 module.exports = sellerController;

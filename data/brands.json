@@ -1,20 +1,26 @@
 [
     {
-      "brandName": "Toyota"
+      "brandName": "Toyota",
+      "logo": "https://brandlogos.net/wp-content/uploads/2014/06/toyota-logo-vector-download-400x400.jpg"
     },
     {
-      "brandName": "Ferrari"
+      "brandName": "Ferrari",
+      "logo": "https://seeklogo.com/images/F/ferrari-logo-7935CF173C-seeklogo.com.png"
     },
     {
-      "brandName": "Mercedes"
+      "brandName": "Mercedes",
+      "logo": "https://www.kindpng.com/picc/m/195-1953214_f1-2019-mercedes-logo-hd-png-download.png"
     },
     {
-      "brandName": "Honda"
+      "brandName": "Honda",
+      "logo": "https://cdn.pixabay.com/photo/2016/08/15/18/18/honda-1596081_960_720.png"
     },
     {
-      "brandName": "BMW"
+      "brandName": "BMW",
+      "logo": "https://seeklogo.com/images/B/bmw-logo-248C3D90E6-seeklogo.com.png"
     },
     {
-      "brandName": "Audi"
+      "brandName": "Audi",
+      "logo": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0020/6255/brand.gif?itok=ExJsjq-L"
     }
   ]
