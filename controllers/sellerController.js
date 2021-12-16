@@ -7,7 +7,7 @@ class sellerController {
       include: [Detail, Brand]
     })
       .then(data => {
-        res.send(data)
+        res.render('sellerCarList', {data})
       })
       .catch(err => {
         res.send(err)
@@ -34,8 +34,8 @@ class sellerController {
     Car.create(valueCar)
       .then(data => {
         let valueDetail = {cc, mileage, transmission, description, CarId : data.instance.dataValue.id}
-        res.send(data)
-        // return Detail.create(valueDetail)   
+        // res.send(data)
+        Detail.create(valueDetail)   
       })
       .then(data => {
         res.redirect('/sell')
@@ -44,10 +44,20 @@ class sellerController {
         res.send(err) // <== kasih alert nanti
       })
 
+  }
 
+  static editCarForm(req, res) {
+    Car.findByPk()
+  }
 
+  static editCar(req, res) {
+    
+  }
+
+  static deleteCar(req, res) {
 
   }
+
 }
 
 module.exports = sellerController;

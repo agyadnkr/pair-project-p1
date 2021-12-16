@@ -8,6 +8,9 @@
 </head>
 <body>
 
+  <h1>Car List</h1>
+  <a href="#">Add Car</a> <br><br>
+
     <table border="1">
         <tr>
           <th>Brand</th>
@@ -25,18 +28,18 @@
     
         <% data.forEach(each => { %>
           <tr>
-            <td><%= data.Brand.brandName %></td>
-            <td><%= data.model %></td>
-            <td><%= data.imageUrl %></td>
-            <td><%= data.year %></td>
-            <td><%= data.Detail.transmission %></td>
-            <td><%= data.color %></td>
-            <td><%= data.Detail.cc %></td>
-            <td><%= data.Detail.mileage %></td>
-            <td><%= data.price %></td>
+            <td><%= each.Brand.brandName %></td>
+            <td><%= each.model %></td>
+            <td><img src="<%= each.imageUrl %>" alt="car image"></td>
+            <td><%= each.year %></td>
+            <td><%= each.Detail.transmission %></td>
+            <td><%= each.color %></td>
+            <td><%= each.Detail.cc %></td>
+            <td><%= each.Detail.mileage %></td>
+            <td><%= each.price %></td>
             <td><a href="#">Details</a></td>
             <td>
-              <a href="#">Add Car</a>
+              
               <a href="#">Edit Car</a>
               <a href="#">Delete Car</a>
             </td>

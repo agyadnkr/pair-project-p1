@@ -16,13 +16,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Car.init({
-    model: DataTypes.STRING,
+    model: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Input your car model'
+        }
+      }
+    },
     imageUrl: DataTypes.STRING,
     year: DataTypes.INTEGER,
     color: DataTypes.STRING,
     carCode: DataTypes.STRING,
     UserId: DataTypes.INTEGER,
-    BrandId: DataTypes.INTEGER
+    BrandId: DataTypes.INTEGER,
+    price: DataTypes.INTEGER,
+    status: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Car',
