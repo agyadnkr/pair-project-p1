@@ -14,10 +14,39 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Detail.init({
-    cc: DataTypes.INTEGER,
-    mileage: DataTypes.INTEGER,
-    transmission: DataTypes.STRING,
-    description: DataTypes.TEXT,
+    cc: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'Please fill your car cc'
+        }
+      }
+    },
+    mileage: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'Please fill your car mileage'
+        }
+      }
+    },
+    transmission: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Please choose your car transmission'
+        }
+      }
+    },
+    description: {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: {
+          msg: 'Please fill your car description'
+        }
+      }
+    },
     CarId: DataTypes.INTEGER
   }, {
     sequelize,

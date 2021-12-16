@@ -1,7 +1,5 @@
 
 
-class buyerController {
+class Controller {
 
 }
-
-module.exports = buyerController;

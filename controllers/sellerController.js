@@ -24,16 +24,26 @@ class sellerController {
       })
   }
 
+  static carDetail(req, res) {
+    Car.findByPk(req.params.carId, {
+      include: [Detail, User, Brand]
+    })
+    .then(data => {
+      res.render('carDetail', {data})
+    })
+    .catch(err => {
+      res.send(err)
+    })
+  }
+
 
   static addCar(req, res) {
-    // res.send(req.body)
     const { model, imageUrl, year, color, price, BrandId, cc, mileage, transmission, description } = req.body
     let value = { model, imageUrl, year, color, price, BrandId, cc, mileage, transmission, description }
     
-      // res.send(value)
     Car.create(value)
     .then (data => {
-      value = { cc, mileage, transmission, description, BrandId: data.id }
+      value = { cc, mileage, transmission, description, CarId: data.id }
       return Detail.create(value)
     })
     .then(data => {
@@ -41,17 +51,52 @@ class sellerController {
       })
 
     .catch(err => {
-      res.send(err) // <== kasih alert nanti
+      res.send(err.errors.map(e => e.message)) // <== kasih alert nanti
     })
 
   }
 
   static editCarForm(req, res) {
-    
+    let carData;
+
+    Car.findByPk(req.params.carId, {
+      include: [Detail, User]
+    })
+      .then(data =>{
+        carData = data
+        return Brand.findAll()
+      })
+      .then(brandData => {
+        res.render('editCarForm', {brandData, carData})
+      })
+ 
   }
 
   static editCar(req, res) {
-    
+    const { model, imageUrl, year, color, price, BrandId, cc, mileage, transmission, description } = req.body
+
+    let value = { model, imageUrl, year, color, price, BrandId, cc, mileage, transmission, description, updatedAt: new Date() }
+
+    Car.update(value, {
+      where: {
+        id: req.params.carId
+      }
+    })
+    .then (data => {
+      value = { cc, mileage, transmission, description,updatedAt: new Date(),  CarId: data.id }
+      return Detail.update(value, {
+        where: {
+          id: req.params.carId
+        }
+      })
+    })
+    .then(data => {
+        res.redirect('/sell')
+      })
+
+    .catch(err => {
+      res.send(err.errors.map(e => e.message)) // <== kasih alert nanti
+    })
   }
 
   static deleteCar(req, res) {

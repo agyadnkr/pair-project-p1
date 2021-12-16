@@ -9,7 +9,7 @@
 <body>
 
   <h1>Car List</h1>
-  <a href="#">Add Car</a> <br><br>
+  <a href="/sell/add">Add Car</a> <br><br>
 
     <table border="1">
         <tr>
@@ -19,9 +19,8 @@
           <th>Year</th>
           <th>Transmission</th>
           <th>Color</th>
-          <th>cc</th>
-          <th>mileage</th>
           <th>price</th>
+          <th>Status</th>
           <th>Details</th>
           <th>Action</th>
         </tr>
@@ -34,13 +33,12 @@
             <td><%= each.year %></td>
             <td><%= each.Detail.transmission %></td>
             <td><%= each.color %></td>
-            <td><%= each.Detail.cc %></td>
-            <td><%= each.Detail.mileage %></td>
             <td><%= each.price %></td>
-            <td><a href="#">Details</a></td>
+            <td><%= each.status %></td>
+            <td><a href="/sell/<%= each.id %>/detail">Details</a></td>
             <td>
               
-              <a href="#">Edit Car</a>
+              <a href="/sell/<%= each.id %>/edit">Edit Car</a>
               <a href="#">Delete Car</a>
             </td>
           </tr>
