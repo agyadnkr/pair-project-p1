@@ -60,7 +60,7 @@ class sellerController {
     let carData;
 
     Car.findByPk(req.params.carId, {
-      include: [Detail, User]
+      include: [Detail]
     })
       .then(data =>{
         carData = data
@@ -68,6 +68,9 @@ class sellerController {
       })
       .then(brandData => {
         res.render('editCarForm', {brandData, carData})
+      })
+      .catch(err => {
+        res.send(err.errors.map(e => e.message))
       })
  
   }
@@ -77,31 +80,47 @@ class sellerController {
 
     let value = { model, imageUrl, year, color, price, BrandId, cc, mileage, transmission, description, updatedAt: new Date() }
 
-    Car.update(value, {
-      where: {
-        id: req.params.carId
-      }
+    let detailId;
+    let CarId;
+
+    Car.findByPk(req.params.carId, {
+      include: [Detail, Brand]
     })
-    .then (data => {
-      value = { cc, mileage, transmission, description,updatedAt: new Date(),  CarId: data.id }
-      return Detail.update(value, {
+    .then(data => {
+      // res.send(data)
+      detailId = data.Detail.id
+      CarId = data.id
+      Car.update(value, {
         where: {
           id: req.params.carId
         }
       })
     })
+    
+    .then (data => {
+      value = { cc, mileage, transmission, description, CarId, updatedAt: new Date() }
+      return Detail.update(value, {
+        where: {
+          id: detailId
+        }
+      })
+    })
+
     .then(data => {
         res.redirect('/sell')
       })
 
     .catch(err => {
-      res.send(err.errors.map(e => e.message)) // <== kasih alert nanti
+      res.send(err) // <== kasih alert nanti
     })
+    
   }
 
-  static deleteCar(req, res) {
-
-  }
+  // static deleteCar(req, res) {
+  //   Car.destroy({
+  //     include: [Detail]
+  //   })
+  // }
 
 }
 
