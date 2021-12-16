@@ -7,7 +7,7 @@ class sellerController {
       include: [Detail, Brand]
     })
       .then(data => {
-        res.send(data)
+        res.render('sellerCarList', {data})
       })
       .catch(err => {
         res.send(err)
@@ -44,10 +44,20 @@ class sellerController {
       res.send(err) // <== kasih alert nanti
     })
 
+  }
 
+  static editCarForm(req, res) {
+    
+  }
 
+  static editCar(req, res) {
+    
+  }
+
+  static deleteCar(req, res) {
 
   }
+
 }
 
 module.exports = sellerController;
