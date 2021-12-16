@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>Register</title>
+  </head>
+  <body>
+   
+    
+      <br><br>
+      <h1>Register</h1><br><br>
+
+
+      <form action="/register" method="post">
+
+        
+          <label>Username</label>
+          <input type="text" placeholder="Ex. JohnDoe" name="username">
+        
+
+        
+          <label>Password</label>
+          <input type="password" name="password">
+       
+       
+          <label >Email address</label>
+          <input type="email" placeholder="Ex. johndoe@mail.com" name="email">
+   
+
+                 
+          <label>Role</label>
+          <select name="role">
+            <option selected disabled>Choose one</option>
+            <option value="1">User</option>
+            <option value="2">Admin</option>
+          </select>
+
+      
+          <label>Phone</label>
+          <input type="number" placeholder="Ex. 811123456789" name="phone">
+   
+       
+
+        <button type="submit">Submit</button>
+      </form>
+    
+
+
+  </body>
+</html>
