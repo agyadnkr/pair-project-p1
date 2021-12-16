@@ -51,7 +51,7 @@ class sellerController {
       })
 
     .catch(err => {
-      res.send(err.errors.map(e => e.message)) // <== kasih alert nanti
+      res.send(err) // <== kasih alert nanti
     })
 
   }
