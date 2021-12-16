@@ -20,20 +20,55 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
-          msg: 'Input your car model'
+          msg: 'Please fill your car model'
         }
       }
     },
-    imageUrl: DataTypes.STRING,
-    year: DataTypes.INTEGER,
-    color: DataTypes.STRING,
+    imageUrl: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Please fill your car image'
+        }
+      }
+    },
+    year: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'Please fill your car year'
+        }
+      }
+    },
+    color: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Please fill your car color'
+        }
+      }
+    },
     carCode: DataTypes.STRING,
     UserId: DataTypes.INTEGER,
     BrandId: DataTypes.INTEGER,
-    price: DataTypes.INTEGER,
+    price: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: {
+          msg: 'Please fill your car price'
+        }
+      }
+    },
     status: DataTypes.STRING
   }, {
     sequelize,
+    hooks: {
+      beforeCreate: (instance, options) => {
+        instance.status = 'Available'
+
+        instance.carCode = `${instance.id}_${instance.model}_${instance.BrandId}`
+      }
+    },
     modelName: 'Car',
   });
   return Car;

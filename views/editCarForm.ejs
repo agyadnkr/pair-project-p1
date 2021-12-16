@@ -7,48 +7,47 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Add Car For Sale</h2>
+    <h2>Edit Car</h2>
 <form action="/sell/add" method="post">
 
     <label>Choose Brand</label>
     <br>
-    <select name="BrandId">
-      <option selected disabled>Car Brand</option>
-          <% brandData.forEach(e => { %>
-              <option value="<%= e.id%>">
-              <%= e.brandName%>
-              </option>
-          <%  }) %>
-  
+    <select name="BrandId" >
+        <% brandData.forEach(each=> { %>
+        <option value="<%= each.id %>" <%= each.id === carData.BrandId ? 'selected' : '' %>>
+            <%= each.brandName %>
+        </option>
+        <% }) %>
     </select>
+    
     <br><br>
 
   <label>Models</label><br>
-  <input type="text" placeholder="Input your car model" name="model">
+  <input type="text" placeholder="Input your car model" name="model" value="<%= carData.model %>">
   <br><br>
 
   <label>Image Url</label><br>
-  <input type="text" placeholder="Input your car image" name="imageUrl">
+  <input type="text" placeholder="Input your car image" name="imageUrl" value="<%= carData.imageUrl %>">
   <br><br>
 
   <label>Year</label><br>
-  <input type="number" placeholder="Input your car year" name="year">
+  <input type="number" placeholder="Input your car year" name="year" value="<%= carData.year %>">
   <br><br>
 
   <label>Color</label><br>
-  <input type="text" placeholder="Input your car color" name="color">
+  <input type="text" placeholder="Input your car color" name="color" value="<%= carData.color %>">
   <br><br>
 
   <label>Price</label><br>
-  <input type="number" placeholder="Input your car price" name="price">
+  <input type="number" placeholder="Input your car price" name="price" value="<%= carData.price %>">
   <br><br>
 
   <label>cc</label><br>
-  <input type="number" placeholder="Input your car cc" name="cc">
+  <input type="number" placeholder="Input your car cc" name="cc" value="<%= carData.Detail.cc %>">
   <br><br>
 
   <label>Mileage</label><br>
-  <input type="number" placeholder="Input your car mileage" name="mileage">
+  <input type="number" placeholder="Input your car mileage" name="mileage" value="<%= carData.Detail.cc %>">
   <br><br>
   
   <label>Transmission</label>

@@ -14,7 +14,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Brand.init({
-    brandName: DataTypes.STRING
+    brandName: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Please choose your car brand'
+        },
+      }
+    }
   }, {
     sequelize,
     modelName: 'Brand',
