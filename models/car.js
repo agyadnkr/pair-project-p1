@@ -14,6 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       Car.belongsTo(models.User);
       Car.belongsTo(models.Brand);
     }
+
+    get formatPrice() {
+      let options = { style: 'currency', currency: 'IDR' };
+      return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(this.price)
+    }
+
+    static allCarList(value) {
+      return Car.findAll(value)
+    }
+    
   };
   Car.init({
     model: {
@@ -66,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
       beforeCreate: (instance, options) => {
         instance.status = 'Available'
 
-        instance.carCode = `${instance.id}_${instance.model}_${instance.BrandId}`
+        instance.carCode = `${instance.model}_${instance.BrandId}`
       }
     },
     modelName: 'Car',

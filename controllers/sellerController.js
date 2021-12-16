@@ -3,9 +3,12 @@ const { Car, Detail, User, Brand } = require('../models')
 class sellerController {
 
   static carList(req, res) {
-    Car.findAll({
+
+    let value = {
       include: [Detail, Brand]
-    })
+    }
+
+    Car.allCarList(value)
       .then(data => {
         res.render('sellerCarList', {data})
       })
@@ -51,7 +54,7 @@ class sellerController {
       })
 
     .catch(err => {
-      res.send(err) // <== kasih alert nanti
+      res.send(err.errors.map(e => e.message)) // <== kasih alert nanti
     })
 
   }
@@ -70,7 +73,7 @@ class sellerController {
         res.render('editCarForm', {brandData, carData})
       })
       .catch(err => {
-        res.send(err.errors.map(e => e.message))
+        res.send(err)
       })
  
   }
@@ -90,6 +93,7 @@ class sellerController {
       // res.send(data)
       detailId = data.Detail.id
       CarId = data.id
+
       Car.update(value, {
         where: {
           id: req.params.carId
@@ -111,16 +115,33 @@ class sellerController {
       })
 
     .catch(err => {
-      res.send(err) // <== kasih alert nanti
+      res.send(err.errors.map(e => e.message)) // <== kasih alert nanti
     })
     
   }
 
-  // static deleteCar(req, res) {
-  //   Car.destroy({
-  //     include: [Detail]
-  //   })
-  // }
+  static deleteCar(req, res) {
+    let detailData;
+    let carData;
+
+    Car.findByPk(req.params.carId, {
+      include: [Detail]
+    })
+      .then(data => {
+        carData = data
+
+        carData.destroy()
+      })
+      .then(data => {
+        res.redirect('/sell')
+      })
+
+      .catch(err => {
+        res.send(err)
+      })
+
+
+  }
 
 }
 

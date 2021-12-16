@@ -12,7 +12,7 @@ sellerRouter.get('/:carId/detail', Controller.carDetail)
 sellerRouter.get('/:carId/edit', Controller.editCarForm)
 sellerRouter.post('/:carId/edit', Controller.editCar)
 
-sellerRouter.get('/:carId/delete', (req, res) => {res.send('delete car')})
+sellerRouter.get('/:carId/delete', Controller.deleteCar)
 
 
 

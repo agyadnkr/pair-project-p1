@@ -15,7 +15,7 @@
         <tr>
           <th>Brand</th>
           <th>Model</th>
-          <th>Image</th>
+
           <th>Year</th>
           <th>Transmission</th>
           <th>Color</th>
@@ -29,17 +29,17 @@
           <tr>
             <td><%= each.Brand.brandName %></td>
             <td><%= each.model %></td>
-            <td><img src="<%= each.imageUrl %>" alt="car image"></td>
+
             <td><%= each.year %></td>
             <td><%= each.Detail.transmission %></td>
             <td><%= each.color %></td>
-            <td><%= each.price %></td>
+            <td><%= each.formatPrice %></td>
             <td><%= each.status %></td>
             <td><a href="/sell/<%= each.id %>/detail">Details</a></td>
             <td>
               
               <a href="/sell/<%= each.id %>/edit">Edit Car</a>
-              <a href="#">Delete Car</a>
+              <a href="/sell/<%= each.id %>/delete">Delete Car</a>
             </td>
           </tr>
           <% }) %>
