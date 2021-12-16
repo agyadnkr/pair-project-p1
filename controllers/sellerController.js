@@ -1,15 +1,13 @@
-const { Car, Detail, User } = require('../models')
+const { Car, Detail, User, Brand } = require('../models')
 
 class sellerController {
 
   static carList(req, res) {
     Car.findAll({
-      include: [{
-        model: Detail
-      }]
+      include: [Detail, Brand]
     })
       .then(data => {
-        res.render('sellerCarList', {data})
+        res.send(data)
       })
       .catch(err => {
         res.send(err)
