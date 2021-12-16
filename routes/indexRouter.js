@@ -9,4 +9,10 @@ indexRouter.get('/', (req, res) => {res.render('home')})
 indexRouter.use('/user', userRouter)
 indexRouter.use('/sell', sellerRouter)
 
+// Login page
+indexRouter.get('/login', (req, res) => res.send('login'))
+
+// Register page
+indexRouter.get('/login', (req, res) => res.send('login'))
+
 module.exports = indexRouter;
