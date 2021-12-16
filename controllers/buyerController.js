@@ -1,1 +1,7 @@
-// init commit
+
+
+class buyerController {
+
+}
+
+module.exports = buyerController;
