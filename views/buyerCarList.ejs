@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Sell</title>
+</head>
+<body>
+
+  <h1>Car List</h1>
+
+    <table border="1">
+        <tr>
+          <th>Brand</th>
+          <th>Model</th>
+          <!-- <th>Image</th> -->
+          <th>Year</th>
+          <th>Transmission</th>
+          <th>Color</th>
+          <th>price</th>
+          <th>Status</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+    
+        <% data.forEach(each => { %>
+          <tr>
+            <td><%= each.Brand.brandName %></td>
+            <td><%= each.model %></td>
+            <!-- <td><img src="<%= each.imageUrl %>" alt="car image"></td> -->
+            <td><%= each.year %></td>
+            <td><%= each.Detail.transmission %></td>
+            <td><%= each.color %></td>
+            <td><%= each.formatPrice %></td>
+            <td><%= each.status %></td>
+            <td><%= each.Detail.description %></td>
+            <td>
+              
+              <a href="#">Buy Car</a>
+
+            </td>
+          </tr>
+          <% }) %>
+      </table>  
+
+</body>
+</html>
