@@ -1,6 +1,10 @@
 const { Car, Detail, User, Brand } = require('../models')
 
-class buyerController {
+class userController {
+
+
+
+  
 
   static buyerCarList(req, res) {
 
@@ -15,11 +19,12 @@ class buyerController {
       .catch(err => {
         res.send(err)
       })
-
   }
 
-  
+ 
+
+
 
 }
 
-module.exports = buyerController;
+module.exports = userController;
