@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
     UserId: DataTypes.INTEGER,
     BrandId: DataTypes.INTEGER,
     price: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       validate: {
         notEmpty: {
           msg: 'Please fill your car price'
