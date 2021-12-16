@@ -22,6 +22,15 @@ module.exports = (sequelize, DataTypes) => {
           msg: 'Please choose your car brand'
         },
       }
+    },
+    logo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: 'Please input your brand logo'
+        },
+      }
     }
   }, {
     sequelize,
