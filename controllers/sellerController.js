@@ -121,26 +121,17 @@ class sellerController {
   }
 
   static deleteCar(req, res) {
-    let detailData;
-    let carData;
 
-    Car.findByPk(req.params.carId, {
-      include: [Detail]
+    Detail.destroy({where: {id:req.params.carId}})
+    .then(data => {
+      Car.destroy({where: {id:req.params.carId}})
     })
-      .then(data => {
-        carData = data
-
-        carData.destroy()
-      })
-      .then(data => {
-        res.redirect('/sell')
-      })
-
-      .catch(err => {
-        res.send(err)
-      })
-
-
+    .then(data => {
+      res.redirect('/sell')
+    })
+    .catch(err => {
+      res.send(err)
+    })
   }
 
 }
