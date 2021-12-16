@@ -23,17 +23,17 @@
           <th>Action</th>
         </tr>
     
-        <!-- <% data.forEach((element, index)=> { %> -->
+        <% data.forEach(each => { %>
           <tr>
-            <td>brand</td>
-            <td>model</td>
-            <td>image</td>
-            <td>year</td>
-            <td>transmission</td>
-            <td>color</td>
-            <td>cc</td>
-            <td>mileage</td>
-            <td>price</td>
+            <td><%= data.Brand.brandName %></td>
+            <td><%= data.model %></td>
+            <td><%= data.imageUrl %></td>
+            <td><%= data.year %></td>
+            <td><%= data.transmission %></td>
+            <td><%= data.color %></td>
+            <td><%= data.cc %></td>
+            <td><%= data.brand %></td>
+            <td><%= data.brand %></td>
             <td><a href="#">Details</a></td>
             <td>
               <a href="#">Add Car</a>
@@ -41,7 +41,7 @@
               <a href="#">Delete Car</a>
             </td>
           </tr>
-          <!-- <% }) %> -->
+          <% }) %>
       </table>  
 
 </body>
