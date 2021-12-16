@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     cc: DataTypes.INTEGER,
     mileage: DataTypes.INTEGER,
     transmission: DataTypes.STRING,
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    CarId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Detail',

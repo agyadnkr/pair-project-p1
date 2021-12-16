@@ -26,23 +26,23 @@ class sellerController {
 
 
   static addCar(req, res) {
-
-    const {model, imageUrl, year, color, price, cc, mileage, transmission, description, BrandId} = req.body
-
-    let valueCar = {model, imageUrl, year, color, price, BrandId}
-
-    Car.create(valueCar)
-      .then(data => {
-        let valueDetail = {cc, mileage, transmission, description, CarId : data.instance.dataValue.id}
-        res.send(data)
-        // return Detail.create(valueDetail)   
-      })
-      .then(data => {
+    // res.send(req.body)
+    const { model, imageUrl, year, color, price, BrandId, cc, mileage, transmission, description } = req.body
+    let value = { model, imageUrl, year, color, price, BrandId, cc, mileage, transmission, description }
+    
+      // res.send(value)
+    Car.create(value)
+    .then (data => {
+      value = { cc, mileage, transmission, description, BrandId: data.id }
+      return Detail.create(value)
+    })
+    .then(data => {
         res.redirect('/sell')
       })
-      .catch(err => {
-        res.send(err) // <== kasih alert nanti
-      })
+
+    .catch(err => {
+      res.send(err) // <== kasih alert nanti
+    })
 
 
 
