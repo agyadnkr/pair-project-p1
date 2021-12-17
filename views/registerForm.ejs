@@ -11,34 +11,30 @@
 
         
           <label>Username</label>
-          <input type="text" placeholder="Ex. JohnDoe" name="username">
+          <input type="text" placeholder="Ex. JohnDoe" name="username" value="<%= typeof username != 'undefined' ? username : null %>" class="border"><br><br>
         
 
         
           <label>Password</label>
-          <input type="password" name="password">
+          <input type="password" name="password" placeholder="Make it hard, please" class="border"><br><br>
+          
+          <label>Retype Password</label>
+          <input type="password" name="password2" placeholder="Hope you still remember" class="border"><br><br>
+        
        
        
           <label >Email address</label>
-          <input type="email" placeholder="Ex. johndoe@mail.com" name="email">
-   
-
-                 
-          <label>Role</label>
-          <select name="role">
-            <option selected disabled>Choose one</option>
-            <option value="1">User</option>
-            <option value="2">Admin</option>
-          </select>
-
+          <input type="email" placeholder="Ex. johndoe@mail.com" name="email" value="<%= typeof email != 'undefined' ? email : null %>" class="border"><br><br>
+      
       
           <label>Phone</label>
-          <input type="number" placeholder="Ex. 811123456789" name="phone">
+          <input type="number" placeholder="Ex. 811123456789" name="phone" value="<%= typeof phone != 'undefined' ? phone : null %>" class="border" ><br><br>
+        
    
-       
-
         <button type="submit">Submit</button>
       </form>
+
+      <p>Have an Account? <a href="login">Login</a></p>
     
 
 
