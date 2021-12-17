@@ -37,6 +37,23 @@ class userController {
   }
 
 
+  static buyCar(req, res) {
+    Car.update({
+      status : "Sold"
+    }, {
+      where: {
+        id:req.params.carId
+      }
+    })
+    .then(data => {
+      res.redirect(`/user`)
+    })
+    .catch(err => {
+      res.send(err)
+    })
+  }
+
+
 
 
 

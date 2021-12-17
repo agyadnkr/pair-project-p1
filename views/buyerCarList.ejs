@@ -33,7 +33,10 @@
             <td><%= each.status %></td>
             <td>
               
-              <a href="#">Buy Car</a>
+              <% if(each.status === 'Available') { %>
+                <a href="/user/<%= each.id %>/buy" >Buy</a>
+                
+              <% } %>
 
             </td>
           </tr>
