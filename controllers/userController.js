@@ -1,4 +1,5 @@
 const { Car, Detail, User, Brand } = require('../models')
+const sendEmail = require('../helpers/sendEmail.js')
 
 class userController {
 
@@ -38,6 +39,8 @@ class userController {
 
 
   static buyCar(req, res) {
+    let id = req.params.carId
+
     Car.update({
       status : "Sold"
     }, {
@@ -46,6 +49,7 @@ class userController {
       }
     })
     .then(data => {
+      sendEmail(data)
       res.redirect(`/user`)
     })
     .catch(err => {
