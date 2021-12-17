@@ -20,10 +20,6 @@ indexRouter.get('/register', loginController.registerForm)
 indexRouter.post('/register', loginController.registerSubmit)
 
 //Logout
-indexRouter.get('/logout', (req, res) => {
-  req.logout();
-  req.flash('success_msg', 'You are logged out');
-  res.redirect('/users/login');
-});
+indexRouter.get('/logout', loginController.logout);
 
 module.exports = indexRouter;
